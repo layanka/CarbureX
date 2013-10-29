@@ -3,54 +3,211 @@
   <meta charset="utf-8">
 
   <title>My Parse App</title>
-  <meta name="description" content="My Parse App">
+  <meta name="description" content="Question Input">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
+  <style>
+
+    form {
+      background-color: rgb(244,252,232);
+      width: 500px;
+      padding: 1em;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px; 
+    }
+
+    fieldset {
+  	  background-color: rgba(126,208,214,0.3);
+      border: 3px solid rgb(255,255,255);
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px; »
+      border-radius: 10px; 
+      margin: 0 0 1em 0;
+    }
+
+    fieldset:hover {
+      background-color: rgba(126,208,214,0.5);
+    }
+
+    legend {
+      font-size: 133%;
+    }
+
+    form div {
+      float: left;
+      width: 100%;
+      padding: 0 0 0.75em 0;
+      position: relative;
+    }
+
+    form p.help {
+      font-style: italic;
+      padding: 0 1em 1em 1em;
+    }
+
+    form fieldset div {
+      padding-top: 1em;
+      padding-left: 1em;
+    }
+
+    form label {
+      float: left;
+      width: 30%;
+      font-size: 116.7%;
+    }
+
+    form div label em {
+      position: absolute;
+      right: 0;
+    }
+
+    form input {
+      width: 65%;
+      font-size: 133%;
+      border: 0;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px; 
+      padding: 0.25em;
+    }
+
+    div.submit {
+      float: none;
+      background-color: rgba(126,208,214,0.3);
+      border: 3px solid rgb(255,255,255);
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px; 
+      margin: 0 0 1em 0;
+      padding: 0.5em 0 0.5em 0;
+      text-align: center;
+    }
+
+    form input[type="submit"] {
+      width: auto;
+      border: 3px solid rgb(126,208,214);
+      background-color: rgba(78,150,137,0.5);
+      color: rgb(255,255,255);
+    }
+
+    form input[type="submit"]:hover {
+      background-color: rgb(78,150,137);
+    }
+	
+	textarea {
+		width: 90%;
+		height: 140px;
+		border-top: 1px solid #999;
+  		border-right: 1px solid #ccc;
+  		border-bottom: 1px solid #cfcfcf;
+  		border-left: 1px solid #cfcfcf;
+  		-webkit-box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+  		-moz-box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+  		box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1); 
+  		padding: 4px; 
+  		-webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+	}
+ 
+	#loadingGraphic {
+		position:absolute;
+		left: 50%;
+		top: 50%;
+		display:none;
+	}
+ 
+	#status {
+		text-align: center;
+	}
+
+  </style>
 </head>
 
 <body>
   
   <div id="main">
-    <h1>You're ready to use Parse!</h1>
 
-    <p>Read the documentation and start building your JavaScript app:</p>
+    <form id="questionForm">
+      <p class="help">Entrez une question ici</p>
 
-    <ul>
-      <li><a href="https://www.parse.com/docs/js_guide">Parse JavaScript Guide</a></li>
-      <li><a href="https://www.parse.com/docs/js">Parse JavaScript API Documentation</a></li>
-    </ul>
+      <fieldset>
+        <legend>Question</legend>
 
-    <div style="display:none" class="error">
-      Looks like there was a problem saving the test object. Make sure you've set your application ID and javascript key correctly in the call to <code>Parse.initialize</code> in this file.
-    </div>
+        <div>
+          <label for="text1">Première partie</label>
+          <textarea id="text1"></textarea>
+        </div>
 
-    <div style="display:none" class="success">
-      <p>We've also just created your first object using the following code:</p>
-      
-        <code>
-          var TestObject = Parse.Object.extend("TestObject");<br/>
-          var testObject = new TestObject();<br/>
-          testObject.save({foo: "bar"});
-        </code>
-    </div>
+        <div>
+          <label for="text2">Deuxième partie</label>
+          <textarea id="text2"></textarea>
+        </div>
+      </fieldset>
+
+        <div class="submit">
+          <input type="submit" value="Submit" />
+        </div>
+
+        <div id="status"></div>
+
+    </form>
+
+    <img src="ajax-loader.gif" style="" id="loadingGraphic" />
+    
+
   </div>
 
   <script type="text/javascript">
-    Parse.initialize("APPLICATION_ID", "JAVASCRIPT_KEY");
-    
-    var TestObject = Parse.Object.extend("TestObject");
-    var testObject = new TestObject();
-      testObject.save({foo: "bar"}, {
-      success: function(object) {
-        $(".success").show();
-      },
-      error: function(model, error) {
-        $(".error").show();
-      }
-    });
+
+    Parse.initialize("tb10IvNCakrCYJDxlpBUGwIQogXaJ99qcv6P6OiD", "Pl0R1BcV52UFMqHpHjzjludQ7OOKRSRBUt5IOCVb");
+    QuestionObject = Parse.Object.extend("Questions");
+
+    function saveToParse(ob,successCB) {
+		var questionObject = new QuestionObject();
+		questionObject.save(ob, {
+			success: function(object) {
+				console.log("Saved to parse.");
+				console.dir(object);
+				successCB(object);
+			},
+			error: function(model, error) {
+				console.log("Error!");
+				console.dir(error);
+			}
+		});
+	}
+
+	function resetForm() {
+		$("#text1").val("");
+		$("#text2").val("");
+		$("#questionForm").removeAttr("disabled","disabled");
+		$("#loadingGraphic").hide();
+		var status = $("#status");
+		status.fadeIn().html("Your question has been saved!").fadeOut(4000);
+	}
+
+    $("#questionForm").on("submit", function(e) {
+		e.preventDefault();
+
+    	var question = {};
+    		question.text1 = $("#text1").val();
+    		question.text2 = $("#text2").val();
+
+		console.log("To question: ",question);
+		//ok, disable the form while submitting and show a loading gfx
+		$(this).attr("disabled","disabled");
+		$("#loadingGraphic").show();
+
+		console.log("I'm online, send to parse");
+
+		saveToParse(question,resetForm);
+	});
+
   </script>
 </body>
 
