@@ -144,6 +144,11 @@
         </div>
 
         <div>
+          <label for="picture">.png Image only</label>
+          <input type="file" id="questionImage" />
+        </div>
+
+        <div>
           <label for="text2">Deuxième partie</label>
           <textarea id="text2"></textarea>
         </div>
@@ -203,9 +208,25 @@
 		$(this).attr("disabled","disabled");
 		$("#loadingGraphic").show();
 
-		console.log("I'm online, send to parse");
-
-		saveToParse(question,resetForm);
+		var fileUploadControl = $("#questionImage")[0];
+		if (fileUploadControl.files.length > 0) {
+  		  var file = fileUploadControl.files[0];
+  		  var name = "photo.png";
+ 		  var parseFile = new Parse.File(name, file);
+ 		  
+ 		  parseFile.save().then(function() {
+  		    // The file has been saved to Parse.
+  		    question.image = parseFile;
+  		    console.log("Send to parse");
+		    saveToParse(question,resetForm);
+		  }, function(error) {
+  		    // The file either could not be read, or could not be saved to Parse.
+		  });
+		} else {
+		  console.log("Send to parse");
+		  saveToParse(question,resetForm);
+		}
+		
 	});
 
   </script>
