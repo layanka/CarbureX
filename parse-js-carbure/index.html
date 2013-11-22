@@ -1,173 +1,68 @@
-<!doctype html>
-<head>
-  <meta charset="utf-8">
-
-  <title>My Parse App</title>
-  <meta name="description" content="Question Input">
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
-  <style>
-
-    form {
-      background-color: rgb(244,252,232);
-      width: 500px;
-      padding: 1em;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px; 
-    }
-
-    fieldset {
-  	  background-color: rgba(126,208,214,0.3);
-      border: 3px solid rgb(255,255,255);
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px; »
-      border-radius: 10px; 
-      margin: 0 0 1em 0;
-    }
-
-    fieldset:hover {
-      background-color: rgba(126,208,214,0.5);
-    }
-
-    legend {
-      font-size: 133%;
-    }
-
-    form div {
-      float: left;
-      width: 100%;
-      padding: 0 0 0.75em 0;
-      position: relative;
-    }
-
-    form p.help {
-      font-style: italic;
-      padding: 0 1em 1em 1em;
-    }
-
-    form fieldset div {
-      padding-top: 1em;
-      padding-left: 1em;
-    }
-
-    form label {
-      float: left;
-      width: 30%;
-      font-size: 116.7%;
-    }
-
-    form div label em {
-      position: absolute;
-      right: 0;
-    }
-
-    form input {
-      width: 65%;
-      font-size: 133%;
-      border: 0;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px; 
-      padding: 0.25em;
-    }
-
-    div.submit {
-      float: none;
-      background-color: rgba(126,208,214,0.3);
-      border: 3px solid rgb(255,255,255);
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px; 
-      margin: 0 0 1em 0;
-      padding: 0.5em 0 0.5em 0;
-      text-align: center;
-    }
-
-    form input[type="submit"] {
-      width: auto;
-      border: 3px solid rgb(126,208,214);
-      background-color: rgba(78,150,137,0.5);
-      color: rgb(255,255,255);
-    }
-
-    form input[type="submit"]:hover {
-      background-color: rgb(78,150,137);
-    }
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+  	<title>Carbure/Neurone - Admn</title>
+  	<meta name="description" content="Administration">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	textarea {
-		width: 90%;
-		height: 140px;
-		border-top: 1px solid #999;
-  		border-right: 1px solid #ccc;
-  		border-bottom: 1px solid #cfcfcf;
-  		border-left: 1px solid #cfcfcf;
-  		-webkit-box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1);
-  		-moz-box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1);
-  		box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1); 
-  		padding: 4px; 
-  		-webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-	}
- 
-	#loadingGraphic {
-		position:absolute;
-		left: 50%;
-		top: 50%;
-		display:none;
-	}
- 
-	#status {
-		text-align: center;
-	}
-
-  </style>
-</head>
-
-<body>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://code.jquery.com/jquery.js"></script>
   
-  <div id="main">
+		<!-- Twitter Bootstrap 3.0.2 stuff -->
+  	<!-- Latest compiled and minified CSS -->
+  	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  	<!-- Optional theme -->
+  	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+  	<!-- Latest compiled and minified JavaScript -->
+  	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  
+		<!-- Parse stuff -->
+  	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
 
-    <form id="questionForm">
-      <p class="help">Entrez une question ici</p>
+  	<!-- My styles and scripts-->
+  	<link rel="stylesheet" href="styles/css/main.css">
+	</head>
 
-      <fieldset>
-        <legend>Question</legend>
+	<body>
+  
+  	<div id="main">
 
-        <div>
-          <label for="text1">Première partie</label>
-          <textarea id="text1"></textarea>
-        </div>
+    	<form id="questionForm">
+      	<p class="fieldsettitle">Question</p>
 
-        <div>
-          <label for="picture">.png Image only</label>
-          <input type="file" id="questionImage" />
-        </div>
+      	<fieldset>
+        
+        	<div>
+          	<label for="text1">Première partie</label>
+          	<textarea id="text1"></textarea>
+        	</div>
 
-        <div>
-          <label for="text2">Deuxième partie</label>
-          <textarea id="text2"></textarea>
-        </div>
-      </fieldset>
+        	<div>
+          	<label for="picture">.png Image only</label>
+          	<input type="file" id="questionImage" />
+        	</div>
 
-        <div class="submit">
-          <input type="submit" value="Submit" />
-        </div>
+        	<div>
+          	<label for="text2">Deuxième partie</label>
+          	<textarea id="text2"></textarea>
+        	</div>
+      	</fieldset>
 
-        <div id="status"></div>
+        	<div class="submit">
+          	<input type="submit" value="Submit" />
+        	</div>
 
-    </form>
+        	<div id="status"></div>
 
-    <img src="ajax-loader.gif" style="" id="loadingGraphic" />
+    		</form>
+
+    		<img src="img/ajax-loader.gif" style="" id="loadingGraphic" />
     
 
-  </div>
+  		</div>
 
-  <script type="text/javascript">
+  		<script type="text/javascript">
 
     Parse.initialize("tb10IvNCakrCYJDxlpBUGwIQogXaJ99qcv6P6OiD", "Pl0R1BcV52UFMqHpHjzjludQ7OOKRSRBUt5IOCVb");
     QuestionObject = Parse.Object.extend("Questions");
@@ -229,7 +124,6 @@
 		
 	});
 
-  </script>
-</body>
-
+  	</script>
+	</body>
 </html>

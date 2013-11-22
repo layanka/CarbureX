@@ -1,0 +1,114 @@
+/* line 4, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form {
+  background-color: #a5c9fc;
+  width: 500px;
+  padding: 1em;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+/* line 13, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+fieldset {
+  background-color: #60abe6;
+  border: 3px solid #ffffff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0 0 1em 0;
+}
+/* line 22, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+fieldset:hover {
+  border-color: #000000;
+}
+/* line 26, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+.fieldsettitle {
+  font-size: 133%;
+}
+/* line 34, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form div {
+  float: left;
+  width: 100%;
+  padding: 0 0 0.75em 0;
+  position: relative;
+}
+/* line 41, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form p.help {
+  font-style: italic;
+  padding: 0 1em 1em 1em;
+}
+/* line 46, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form fieldset div {
+  padding-top: 1em;
+  padding-left: 1em;
+}
+/* line 51, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form label {
+  float: left;
+  width: 30%;
+  font-size: 116.7%;
+}
+/* line 57, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form div label em {
+  position: absolute;
+  right: 0;
+}
+/* line 62, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form input {
+  width: 65%;
+  font-size: 133%;
+  border: 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 0.25em;
+}
+/* line 72, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+div.submit {
+  float: none;
+  background-color: rgba(126, 208, 214, 0.3);
+  border: 3px solid #ffffff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0 0 1em 0;
+  padding: 0.5em 0 0.5em 0;
+  text-align: center;
+}
+/* line 84, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form input[type="submit"] {
+  width: auto;
+  border: 3px solid #7ed0d6;
+  background-color: rgba(78, 150, 137, 0.5);
+  color: #ffffff;
+}
+/* line 91, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+form input[type="submit"]:hover {
+  background-color: #4e9689;
+}
+/* line 95, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+textarea {
+  width: 90%;
+  height: 140px;
+  border-top: 1px solid #999;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #cfcfcf;
+  border-left: 1px solid #cfcfcf;
+  -webkit-box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset -2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+/* line 111, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+#loadingGraphic {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: none;
+}
+/* line 118, /Users/philippe/Documents/Projet Carbure/CarbureX/parse-js-carbure/styles/less/main.less */
+#status {
+  text-align: center;
+}
